@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+  <div style="text-align:center"> 
+    <button onclick="playPause()">播放/暂停</button> 
+    <button onclick="makeBig()">放大</button>
+    <button onclick="makeSmall()">缩小</button>
+    <button onclick="makeNormal()">普通</button>
+    <br> 
+    <video id="video1" width="420">
+      <source src="mov_bbb.mp4" type="video/mp4">
+      <source src="mov_bbb.ogg" type="video/ogg">
+      您的浏览器不支持 HTML5 video 标签。
+    </video>
+  </div>
+  <script> 
+  var myVideo=document.getElementById("video1"); 
+  
+  function playPause()
+  { 
+    if (myVideo.paused) 
+      myVideo.play(); 
+    else 
+      myVideo.pause(); 
+  } 
+  
+    function makeBig()
+  { 
+    myVideo.width=560; 
+  } 
+  
+    function makeSmall()
+  { 
+    myVideo.width=320; 
+  } 
+  
+    function makeNormal()
+  { 
+    myVideo.width=420; 
+  } 
+ </script>
+<link rel="icon" href="favicon.ico" type ="image/x-icon">
+<meta charset="utf-8">
+<title>渲染 HTML5</title>
+  <!--[if lt IE 9]>
+  <script src="http://cdn.static.runoob.com/libs/html5shiv/3.7/html5shiv.min.js"></script>
+  <![endif]-->
+</head>
+ 
+<body>
+ 
+<h1>我的第一篇文章</h1>
+ 
+<article>
+菜鸟教程 —— 学的不仅是技术，更是梦想！！！
+</article>
+ 
+</body>
+</html>
