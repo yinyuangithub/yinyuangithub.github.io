@@ -1,43 +1,28 @@
 <!DOCTYPE html>
-<html>
-<script src="http://apps.bdimg.com/libs/angular.js/1.4.6/angular.min.js"></script>
+<html ng-app="myNoteApp">
+<head>
+<meta charset="utf-8">
+<script src="https://cdn.staticfile.org/angular.js/1.4.6/angular.min.js"></script>
+</head>
 <body>
 
-<h2>Validation Example</h2>
+<div ng-controller="myNoteCtrl">
 
-<form  ng-app="myApp"  ng-controller="validateCtrl"
-name="myForm" novalidate>
+<h2>我的笔记</h2>
 
-<p>用户名:<br>
-  <input type="text" name="user" ng-model="user" required>
-  <span style="color:red" ng-show="myForm.user.$dirty && myForm.user.$invalid">
-  <span ng-show="myForm.user.$error.required">用户名是必须的。</span>
-  </span>
-</p>
-
-<p>邮箱:<br>
-  <input type="email" name="email" ng-model="email" required>
-  <span style="color:red" ng-show="myForm.email.$dirty && myForm.email.$invalid">
-  <span ng-show="myForm.email.$error.required">邮箱是必须的。</span>
-  <span ng-show="myForm.email.$error.email">非法的邮箱。</span>
-  </span>
-</p>
+<p><textarea ng-model="message" cols="40" rows="10"></textarea></p>
 
 <p>
-  <input type="submit"
-  ng-disabled="myForm.user.$dirty && myForm.user.$invalid ||
-  myForm.email.$dirty && myForm.email.$invalid">
+<button ng-click="save()">保存</button>
+<button ng-click="clear()">清除</button>
 </p>
 
-</form>
+<p>Number of characters left: <span ng-bind="left()"></span></p>
 
-<script>
-var app = angular.module('myApp', []);
-app.controller('validateCtrl', function($scope) {
-    $scope.user = ' yinyuan';
-    $scope.email = 'yinyuan2099@outlook.com';
-});
-</script>
+</div>
+
+<script src="myNoteApp.js"></script>
+<script src="myNoteCtrl.js"></script>
 
 </body>
 </html>
