@@ -1,60 +1,43 @@
 <!DOCTYPE html>
 <html>
-<head>
-<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
-  <div style="text-align:center"> 
-    <button onclick="playPause()">播放/暂停</button> 
-    <button onclick="makeBig()">放大</button>
-    <button onclick="makeSmall()">缩小</button>
-    <button onclick="makeNormal()">普通</button>
-    <br> 
-    <video id="video1" width="420">
-      <source src="mov_bbb.mp4" type="video/mp4">
-      <source src="mov_bbb.ogg" type="video/ogg">
-      您的浏览器不支持 HTML5 video 标签。
-    </video>
-  </div>
-  <script> 
-  var myVideo=document.getElementById("video1"); 
-  
-  function playPause()
-  { 
-    if (myVideo.paused) 
-      myVideo.play(); 
-    else 
-      myVideo.pause(); 
-  } 
-  
-    function makeBig()
-  { 
-    myVideo.width=560; 
-  } 
-  
-    function makeSmall()
-  { 
-    myVideo.width=320; 
-  } 
-  
-    function makeNormal()
-  { 
-    myVideo.width=420; 
-  } 
- </script>
-<link rel="icon" href="favicon.ico" type ="image/x-icon">
-<meta charset="utf-8">
-<title>渲染 HTML5</title>
-  <!--[if lt IE 9]>
-  <script src="http://cdn.static.runoob.com/libs/html5shiv/3.7/html5shiv.min.js"></script>
-  <![endif]-->
-</head>
- 
+<script src="http://apps.bdimg.com/libs/angular.js/1.4.6/angular.min.js"></script>
 <body>
- 
-<h1>我的第一篇文章</h1>
- 
-<article>
-菜鸟教程 —— 学的不仅是技术，更是梦想！！！
-</article>
- 
+
+<h2>Validation Example</h2>
+
+<form  ng-app="myApp"  ng-controller="validateCtrl"
+name="myForm" novalidate>
+
+<p>用户名:<br>
+  <input type="text" name="user" ng-model="user" required>
+  <span style="color:red" ng-show="myForm.user.$dirty && myForm.user.$invalid">
+  <span ng-show="myForm.user.$error.required">用户名是必须的。</span>
+  </span>
+</p>
+
+<p>邮箱:<br>
+  <input type="email" name="email" ng-model="email" required>
+  <span style="color:red" ng-show="myForm.email.$dirty && myForm.email.$invalid">
+  <span ng-show="myForm.email.$error.required">邮箱是必须的。</span>
+  <span ng-show="myForm.email.$error.email">非法的邮箱。</span>
+  </span>
+</p>
+
+<p>
+  <input type="submit"
+  ng-disabled="myForm.user.$dirty && myForm.user.$invalid ||
+  myForm.email.$dirty && myForm.email.$invalid">
+</p>
+
+</form>
+
+<script>
+var app = angular.module('myApp', []);
+app.controller('validateCtrl', function($scope) {
+    $scope.user = 'John Doe';
+    $scope.email = 'john.doe@gmail.com';
+});
+</script>
+
 </body>
 </html>
